@@ -1,0 +1,32 @@
+group 'Test-Spring'
+version '1.0'
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'commons-logging:commons-logging:1.2'
+    compile 'log4j:log4j:1.2.13'
+}
+
+jettyRun {
+    contextPath = 'web'
+    httpPort = 8088
+}
+
+jettyRunWar {
+    contextPath = 'web'
+    httpPort = 8088
+}
